@@ -14,7 +14,7 @@ let timerId = null;
 function createPromise(event) {
   let currentDelay = delay.value - step.value;
   let currentStep = Number(step.value);
-  console.log(currentDelay);
+  
   event.preventDefault();
     setTimeout(() => {
       timerId = setInterval(() => {
@@ -37,12 +37,12 @@ function createPromise(event) {
         .then(({ position, delay }) => {
           Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${(currentDelay + currentStep)}ms`);
           currentStep = currentStep + Number(step.value);
-          console.log(currentStep);
+          
         })
         .catch(({ position, delay }) => {
           Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${(currentDelay + currentStep)}ms`);
           currentStep = currentStep + Number(step.value);
-          console.log(currentStep);
+          
         });
       }, currentStep)
   }, currentDelay)
